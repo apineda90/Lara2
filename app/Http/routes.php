@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('login', function () {
-    return view('principal');
-});
+Route::post('login','UsuarioController@login');
 
 Route::get('nuevo', function () {
     return view('nuevo');
@@ -34,6 +32,8 @@ Route::get('compartidos', function () {
 Route::get('perfil', function () {
     return view('perfil');
 });
+
+Route::post('registro','UsuarioController@guardar');
 /*
 |--------------------------------------------------------------------------
 | Application Routes

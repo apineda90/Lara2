@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Diagram-POl</title>
 
@@ -78,7 +79,8 @@
                 <p>Una nueva herramienta modeladora de tipo colaborativa, para ti!</p>
 
                 <form action="/login" method="post">
-
+		<meta name="csrf-token" content="{{ csrf_token() }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group" align="center">
                         <label>Usuario:</label>
 
@@ -106,7 +108,7 @@
                                     required
                                     title="Contraseña"
                                     placeholder="Contraseña"
-                                    name="current_password"
+                                    name="passwordLog"
                                     autocomplete="on"/>
                         </div>
                     </div>
@@ -128,11 +130,12 @@
                 <div class="col-md-6 col-sm-12 pull-left" >
                     <div class="sign-up-wrapper wrapper-background2">
 
-                        <h1 >Registrate !!</h1><br/>
+                        <h1 >Registrate !!</h1>
                         <p>¡Disfruta de una nueva herramienta!</p>
-                        <br/><br/>
+                        <br/>
 
-                        <form align="right" action="index3.html" method="post">
+                        <form align="right" action="/registro" method="post">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group" >
                                 <label >Usuario:</label>
                                 <div class="input-group">
@@ -157,19 +160,33 @@
                                             required
                                             title="Debe tener al menos un numero y una mayúscula, mínimo 6 caracteres, máximo 12"
                                             placeholder="Contraseña Diagram-Pol"
-                                            name="current_password"
+                                            name="passwordRegistro"
                                             autocomplete="on">
                                 </div>
                             </div>
                             <div class="form-group" >
-                                <label >Edad:</label>
+                                <label >Nombres:</label>
                                 <div class="input-group">
 
                                     <input  style="background-color: white"
                                             type="text"
-                                            title="Edad"
-                                            placeholder="Edad"
-                                            name="edad"
+                                            title="Nombres y Apellidos"
+                                            placeholder="Nombres y Apellidos"
+                                            name="nombresReg"
+                                            required
+                                            autocomplete="on">
+                                </div>
+                            </div>
+
+                            <div class="form-group" >
+                                <label >Correo:</label>
+                                <div class="input-group">
+
+                                    <input  style="background-color: white"
+                                            type="text"
+                                            title="Correo"
+                                            placeholder="Correo Electronico"
+                                            name="emailReg"
                                             autocomplete="on">
                                 </div>
                             </div>
